@@ -1,6 +1,6 @@
 FROM node:current-buster-slim as build-env
 
-LABEL maintainer="Coding <code@ongoing.today>"
+LABEL maintainer="Ismael Valenzuela @aboutsecurity"
 
 WORKDIR /nav-app/
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,7 +13,7 @@ RUN apt-get update --fix-missing && \
         git \
         wget && \
     git clone https://github.com/aboutsecurity/attack-navigator-4.1 && \
-    mv attack-navigator/nav-app/* . && \
+    mv attack-navigator-4.1/nav-app/* . && \
     rm -rf attack-navigator && \
     npm install --unsafe-perm && \
     npm install -g @angular/cli && \
