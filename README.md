@@ -1,6 +1,4 @@
-# MITRE ATT&CK® Navigator in a container
-
-![Linter](https://github.com/reuteras/container-attack-navigator/workflows/Linter/badge.svg)
+# MITRE ATT&CK® Navigator 4.1 in a container
 
 My Docker container for the [MITRE ATT&CK® Navigator] (https://github.com/mitre-attack/attack-navigator). 
 
