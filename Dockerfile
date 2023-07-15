@@ -23,7 +23,6 @@ RUN apt-get update --fix-missing && \
     rm -rf /var/lib/apt/lists/*
 
 USER node
-EXPOSE 4200
 
 # Build final container to serve static content.
 FROM nginx:mainline-alpine
