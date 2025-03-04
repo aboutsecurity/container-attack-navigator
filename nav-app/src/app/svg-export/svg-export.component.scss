@@ -1,0 +1,31 @@
+@import '../../colors.scss';
+
+.svgcontainer {
+    overflow-x: auto;
+    text-align: center;
+    min-height: 60vh;
+    max-height: 60vh;
+    min-width: 75vw;
+    max-width: 75vw;
+    padding: 25px;
+
+    &.dark-mode {
+        background-color: color(dark-1) !important;
+    }
+}
+
+.dropdown-container {
+    padding: 10px;
+    top: 34px;
+    ul {
+        padding-left: 0;
+        li {
+            list-style: none;
+            text-align: left;
+        }
+    }
+}
+
+.iewarning {
+    color: red;
+}

@@ -1,29 +1,27 @@
-FROM node:18-bullseye-slim as build-env
+# Build stage
 
-LABEL maintainer="Ismael Valenzuela @aboutsecurity"
+FROM node:18
 
-WORKDIR /nav-app/
-ENV DEBIAN_FRONTEND noninteractive
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-RUN chown -R node:node ./
+# install node packages - cache for faster future builds
+WORKDIR /src/nav-app
+COPY ./nav-app/package*.json ./
 
-# Install packages and build
-RUN apt-get update --fix-missing && \
-    apt-get install -qqy --no-install-recommends \
-        ca-certificates \
-        git \
-        wget && \
-    git clone https://github.com/mitre-attack/attack-navigator.git --branch v4.8.2 && \
-    mv attack-navigator/nav-app/* . && \
-    rm -rf attack-navigator && \
-    npm install --unsafe-perm --legacy-peer-deps && \
-    npm install -g @angular/cli && \
-    ng build --output-path /tmp/output && \
-    rm -rf /var/lib/apt/lists/*
+# install packages and build 
+RUN npm install
 
-USER node
+# copy over needed files
+COPY ./nav-app/ ./
 
-# Build final container to serve static content.
-FROM nginx:mainline-alpine
-COPY --from=build-env /tmp/output /usr/share/nginx/html
+# copy layers directory
+WORKDIR /src
+COPY layers/ ./layers/
+
+# copy markdown files from root
+COPY *.md ./
+
+WORKDIR /src/nav-app
+EXPOSE 4200
+
+CMD npm start

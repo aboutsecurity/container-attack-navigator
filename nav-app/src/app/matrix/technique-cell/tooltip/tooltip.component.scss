@@ -1,0 +1,57 @@
+@import '../cell-popover.scss';
+@import '../../../../colors';
+
+.tooltip {
+    @include cell-popover(0.75);
+    @include adaptive-color('background', rgba(80, 80, 80, 0.75), rgba(#464dff, 0.75));
+    max-height: 45vh;
+    overflow: scroll;
+    padding-bottom: 1em;
+    z-index: 1000;
+    cursor: default;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        td {
+            padding: 3px;
+            vertical-align: top;
+            white-space: pre-line !important;
+        }
+        td:first-child {
+            white-space: nowrap;
+            padding-bottom: 3px !important;
+        }
+        td.wrap {
+            white-space: normal;
+        }
+        tr:nth-child(2) td {
+            border-top: 1px solid white;
+        }
+        tr .divider {
+            margin: 0;
+            padding: 0;
+            hr {
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .technique-name span {
+            vertical-align: middle;
+        }
+        .pin {
+            @include adaptive-color('background-color', rgba(160, 160, 160, 0.75), rgba(#8f92fe, 0.75));
+            border-radius: 4px;
+            float: right;
+            cursor: pointer;
+
+            .mat-icon {
+                font-size: 16px;
+                height: 20px;
+                width: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import '../../colors.scss';
+
+.list-container,
+.add-more {
+    margin: 10px 0;
+}
+.item-container {
+    padding: 10px;
+    border: 1px solid color(panel-dark);
+    margin: 4px 0;
+
+    &.hide-subscript {
+        .mat-mdc-form-field + .mat-mdc-form-field {
+            margin-top: 8px;
+        }
+    }
+    .mat-mdc-form-field {
+        width: 100%;
+    }
+}
+.remove-button {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+.assigned-link {
+    float: left;
+    @include adaptive-color-dark-only('color', color(dark-link) !important);
+}
+.assigned-link:active,
+.assigned-link:visited {
+    @include adaptive-color-dark-only('color', color(dark-link-active));
+}
+
+.divider-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider-button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 0;
+    .icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        border-radius: 3px;
+        padding: 1px;
+    }
+    .line {
+        flex: 1;
+        height: 2px;
+    }
+    &.divider-option {
+        .line, .icon {
+            @include adaptive-color('background-color', color(panel-dark), color(dark-4));
+        }
+    }
+    &.divider {
+        .line, .icon {
+            @include adaptive-color('background-color', darken(color(panel-dark), 40%), lighten(color(dark-4), 40%));
+        }
+    }
+    &:hover .line, &:hover .icon {
+        @include adaptive-color('background-color', color(button-dark), color(dark-link));
+    }
+}

@@ -1,0 +1,105 @@
+@import '../matrix-common.scss';
+.matrix.flat {
+    .tactic {
+        margin-right: 5px;
+        width: 1%;
+        vertical-align: top;
+
+        &.name,
+        &.count {
+            text-align: center;
+            font-size: $sizeunit + 2px;
+        }
+        &.name {
+            cursor: pointer;
+            vertical-align: bottom;
+            font-weight: bold;
+            @media print {
+                font-size: $sizeunit_print - 4px;
+            }
+            position: sticky;
+            top: 0.05px;
+            z-index: 9999;
+            @include adaptive-color-dark-only('background-color', lighten(color(dark-1), 3%));
+            @include adaptive-color-light-only('background-color', white);
+        }
+
+        &.count {
+            @include adaptive-color('border-bottom', 1px solid black, 1px solid white);
+            font-size: $sizeunit - 1px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            @media print {
+                font-size: $sizeunit_print - 4px;
+            }
+            position: sticky;
+            top: 32px;
+            z-index: 9999;
+            @include adaptive-color-dark-only('background-color', lighten(color(dark-1), 3%));
+            @include adaptive-color-light-only('background-color', white);
+        }
+
+        .subtechniques-row.hidden {
+            display: none;
+        }
+        .supertechnique {
+            border-collapse: collapse;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            td {
+                padding: 0;
+                vertical-align: top;
+                &.sidebar.technique {
+                    min-width: 8px;
+                    width: 12px;
+                    padding: 0;
+                    background: on-color-deemphasis(body);
+                    cursor: pointer;
+                    vertical-align: middle;
+                    .handle {
+                        text-align: center;
+                        vertical-align: middle;
+                        transform: rotate(-90deg);
+                        color: color-alternate(body);
+                        width: 12px;
+                        height: 12px;
+                        font-size: 16px;
+                        line-height: 12px;
+                    }
+                    &.disabled {
+                        background: #aaaaaa;
+                        border-color: #aaaaaa;
+                        box-shadow: none;
+                        pointer-events: none;
+                    }
+                }
+                &.sidebar.subtechniques {
+                    svg {
+                        fill: on-color-deemphasis(body);
+                    }
+                }
+                &.sidebar {
+                    border-right: 2px solid on-color-deemphasis(body);
+                    @media print {
+                        display: none;
+                    }
+                }
+                &.technique {
+                    box-shadow: 0 0 0 1px on-color-deemphasis(body) inset;
+                }
+            }
+        }
+
+        .more-icon {
+            transition: all ease 0.125s;
+            vertical-align: top;
+            transform: scale(0.5) rotate(-90deg);
+            width: 12px;
+            height: 12px;
+            &.expanded {
+                transform: scale(0.5);
+            }
+        }
+    }
+}
